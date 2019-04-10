@@ -53,7 +53,7 @@ namespace {
                 $password = ini_get('mysqli.default_pw') ?: null;
             }
 
-            $hash = sha1($hostname . $username . $flags);
+            $hash = sha1($hostname . $password . $username . $flags);
             /* persistent connections start with p: */
             if ($hostname{1} !== ':' && isset(\Dshafik\MySQL::$connections[$hash])) {
                 \Dshafik\MySQL::$last_connection = \Dshafik\MySQL::$connections[$hash]['conn'];
